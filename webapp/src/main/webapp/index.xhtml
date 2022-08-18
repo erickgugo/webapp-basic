@@ -14,6 +14,21 @@
     </f:facet>
 </h:head>
 <h:body>
+    <h:form id="fr">
+        <div align="center" style="padding: 50px">
+            <p:panelGrid columns="1">
+                <p:outputLabel value="Nombre"/>
+                <p:inputText value="#{indexBean.nombre}"/>
+                <p:commandButton value="Submit" action="#{indexBean.actionAdd}" update="fr"/>
+            </p:panelGrid>
 
+            <p:dataTable var="nom" value="#{indexBean.listNombre}">
+                <p:column headerText="Nombres">
+                    <p:outputLabel value="#{nom}"/>
+                </p:column>
+
+            </p:dataTable>
+        </div>
+    </h:form>
 </h:body>
 </html>
