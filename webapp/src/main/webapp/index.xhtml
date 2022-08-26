@@ -7,29 +7,66 @@
 
 <h:head>
     <f:facet name="first">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta http-equiv="x-ua-compatible" content="IE=edge"/>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
         <meta name="apple-mobile-web-app-capable" content="yes"/>
     </f:facet>
+
+
+
 </h:head>
 <h:body>
     <h:form id="fr">
-        <h1>
-            EDITADO POR ERICK
-        </h1>
         <div align="center" style="padding: 50px">
-            <p:panelGrid columns="1">
-                <p:outputLabel value="Nombre"/>
-                <p:inputText value="#{indexBean.nombre}"/>
-                <p:commandButton value="Submit" action="#{indexBean.actionAdd}" update="fr"/>
+            <p:panelGrid columns="2">
+
+
+                <p:outputLabel value="Id"/>
+                <p:inputText value="#{indexBean.user.id}"/>
+                <p:outputLabel value="Nombres"/>
+                <p:inputText value="#{indexBean.user.nombre}"/>
+                <p:outputLabel value="Apellidos"/>
+                <p:inputText value="#{indexBean.user.apellido}"/>
+                <p:outputLabel value="Telefono"/>
+                <p:inputText value="#{indexBean.user.telefono}"/>
+                <p:outputLabel value="Email"/>
+                <p:inputText value="#{indexBean.user.email}"/>
+                <p:outputLabel value="Usuarios"/>
+                <p:inputText value="#{indexBean.user.usuario}"/>
+                <p:outputLabel value="Clave"/>
+                <p:inputText value="#{indexBean.user.clave}"/>
+
             </p:panelGrid>
+            <br></br>
+            <br></br>
+            <p:commandButton value="Mostrar datos" action="#{indexBean.actionPrint}"  update="fr"/>
+            <p:commandButton value="Anadir datos" action="#{indexBean.actionAdd}"  update="fr"/>
+            <br></br>
+            <br></br>
+            <p:dataTable id="Usuarios" var="user" value="#{indexBean.listUser}">
 
-            <p:dataTable var="nom" value="#{indexBean.listNombre}">
-                <p:column headerText="Nombres">
-                    <p:outputLabel value="#{nom}"/>
+                <p:column headerText="Id">
+                    <p:outputLabel value="#{user.id}"/>
                 </p:column>
-
+                <p:column headerText="Nombres">
+                    <p:outputLabel value="#{user.nombre}"/>
+                </p:column>
+                <p:column headerText="Apellidos">
+                    <p:outputLabel value="#{user.apellido}"/>
+                </p:column>
+                <p:column headerText="Telefonos">
+                    <p:outputLabel value="#{user.telefono}"/>
+                </p:column>
+                <p:column headerText="Email">
+                    <p:outputLabel value="#{user.email}"/>
+                </p:column>
+                <p:column headerText="Usuarios">
+                    <p:outputLabel value="#{user.usuario}"/>
+                </p:column>
+                <p:column headerText="Claves">
+                    <p:outputLabel value="#{user.clave}"/>
+                </p:column>
             </p:dataTable>
         </div>
     </h:form>
