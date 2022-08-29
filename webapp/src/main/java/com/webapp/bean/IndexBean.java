@@ -91,7 +91,7 @@ public class IndexBean {
 
     public List<User> getList()
     {
-
+        List<User> listAux= new ArrayList<>();
         //System.out.println("Insert: "+usuario);
     Connection conn = null;
         try
@@ -121,7 +121,7 @@ public class IndexBean {
             u.setEmail(rs.getString(5));
             u.setUsuario(rs.getString(6));
             u.setClave(rs.getString(7));
-            listUser.add(u);
+            listAux.add(u);
             //List<User> listUser= new ArrayList<>();
 
         }
@@ -144,7 +144,7 @@ public class IndexBean {
 
     //CODE
 //return u;
-       return listUser;
+       return listAux;
 }
 
 }
