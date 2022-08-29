@@ -11,4 +11,6 @@ public class User {
     private String email;
     private String usuario;
     private String clave;
+
+
 }
