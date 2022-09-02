@@ -31,6 +31,7 @@ public class IndexBean {
     public void init() {
         System.out.println("Entrando init");
         user = new User();
+        listUser = getList();
     }
 
     public void actionAdd() {
@@ -38,10 +39,15 @@ public class IndexBean {
         //listUser.add(user);
         insertUser(user);
         init();
-        listUser = getList();
     }
 
     public void actionPrint() {
+        for (User user1 : listUser) {
+            System.out.println("===> " + user1);
+        }
+    }
+
+    public void actionEdit() {
         for (User user1 : listUser) {
             System.out.println("===> " + user1);
         }
@@ -113,7 +119,7 @@ public class IndexBean {
         while (rs.next()) {
             u = new User();
 
-            System.out.println(rs.getInt(1) + " " + rs.getString(2) + " " + rs.getString(3) + " " + rs.getInt(4) + " " + rs.getString(5) + " " + rs.getString(6) + "     " + rs.getString(7));
+            //System.out.println(rs.getInt(1) + " " + rs.getString(2) + " " + rs.getString(3) + " " + rs.getInt(4) + " " + rs.getString(5) + " " + rs.getString(6) + "     " + rs.getString(7));
             u.setId(rs.getInt(1));
             u.setNombre(rs.getString(2));
             u.setApellido(rs.getString(3));
@@ -147,4 +153,31 @@ public class IndexBean {
        return listAux;
 }
 
+
+    public void actionDelete(){
+        System.out.println("Eliminando a "+user.getId());
+        Connection conn = null;
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            String url = "jdbc:mysql://127.0.0.1:3306/facebook";
+            String user_db = "root";
+            String password = "";
+            conn = DriverManager.getConnection(url, user_db, password);
+            Statement stmt = conn.createStatement();
+            String sql = "DELETE FROM usuarios where id="+user.getId();
+            System.out.println(sql);
+            stmt.executeUpdate(sql);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+        init();
+    }
 }
