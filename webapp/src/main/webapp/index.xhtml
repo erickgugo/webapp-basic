@@ -48,6 +48,10 @@
                     oncomplete="PF('dlgConDelVar').show()" update="dlgConDel">
                         <f:setPropertyActionListener value="#{user}" target="#{indexBean.user}"/>
                     </p:commandButton>
+                    <p:commandButton icon="pi pi-user-edit" styleClass="rounded-button ui-button-warning"
+                                     oncomplete="PF('dlgEditVar').show()" update="dlgEdit">
+                        <f:setPropertyActionListener value="#{user}" target="#{indexBean.user}"/>
+                    </p:commandButton>
                 </p:column>
             </p:dataTable>
         </div>
@@ -76,6 +80,32 @@
                              oncomplete="PF('dlgVar').hide();"/>
         </h:form>
     </p:dialog>
+
+    <p:dialog id="dlgEdit" widgetVar="dlgEditVar" closeOnEscape="true" modal="true"
+              header="Formulario de usuario">
+        <h:form>
+            <p:panelGrid columns="4">
+                <p:outputLabel value="Nombres"/>
+                <p:inputText value="#{indexBean.user.nombre}"/>
+                <p:outputLabel value="Apellidos"/>
+                <p:inputText value="#{indexBean.user.apellido}"/>
+                <p:outputLabel value="Telefono"/>
+                <p:inputText value="#{indexBean.user.telefono}"/>
+                <p:outputLabel value="Email"/>
+                <p:inputText value="#{indexBean.user.email}"/>
+                <p:outputLabel value="Usuarios"/>
+                <p:inputText value="#{indexBean.user.usuario}"/>
+                <p:outputLabel value="Clave"/>
+                <p:inputText value="#{indexBean.user.clave}"/>
+
+            </p:panelGrid>
+            <br></br>
+            <br></br>
+            <p:commandButton value="Editar datos" action="#{indexBean.actionEdit}" update="fr"
+                             oncomplete="PF('dlgEditVar').hide();"/>
+        </h:form>
+    </p:dialog>
+
     <p:dialog id="dlgConDel" widgetVar="dlgConDelVar" closeOnEscape="true" modal="true"
               header="Eliminacion de usuario">
         <h:form>

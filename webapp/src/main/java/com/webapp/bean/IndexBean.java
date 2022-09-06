@@ -47,11 +47,11 @@ public class IndexBean {
         }
     }
 
-    public void actionEdit() {
+   /* public void actionEdit() {
         for (User user1 : listUser) {
             System.out.println("===> " + user1);
         }
-    }
+    }*/
 
     public void insertUser(User usuario) {
         System.out.println("Insert: " + usuario);
@@ -167,6 +167,64 @@ public class IndexBean {
             String sql = "DELETE FROM usuarios where id="+user.getId();
             System.out.println(sql);
             stmt.executeUpdate(sql);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+        init();
+    }
+
+    public void actionEdit(){
+        System.out.println("Editando a "+user.getId());
+        Connection conn = null;
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            String url = "jdbc:mysql://127.0.0.1:3306/facebook";
+            String user_db = "root";
+            String password = "";
+            String QUERY = "SELECT ID, nombre, apellido, telfono, email, usuario, clave FROM  usuarios";
+            conn = DriverManager.getConnection(url, user_db, password);
+            Statement stmt = conn.createStatement();
+            String sql = "UPDATE usuarios " +
+                    "SET nombre="+user.getNombre()+",apellido="+user.getApellido()+",telfono="+user.getTelefono()+", email="+user.getEmail()+",usuario="+user.getUsuario()+", clave="+user.getClave()+ " WHERE id="+user.getId();
+            System.out.println(sql);
+            stmt.executeUpdate(sql);
+            ResultSet rs = stmt.executeQuery(QUERY);
+            //User n;
+            while(rs.next()){
+                //Display values
+                /*
+                n = new User();
+
+                //System.out.println(rs.getInt(1) + " " + rs.getString(2) + " " + rs.getString(3) + " " + rs.getInt(4) + " " + rs.getString(5) + " " + rs.getString(6) + "     " + rs.getString(7));
+                n.setId(rs.getInt(1));
+                n.setNombre(rs.getString(2));
+                n.setApellido(rs.getString(3));
+                n.setTelefono(rs.getInt(4));
+                n.setEmail(rs.getString(5));
+                n.setUsuario(rs.getString(6));
+                n.setClave(rs.getString(7));
+                listAuxn.add(n);
+                */
+                System.out.print("ID: " + rs.getInt(1));
+                System.out.print(", Nombre: " + rs.getString(2));
+                System.out.print(", Apellido: " + rs.getString(3));
+                System.out.println(", Telefono: " + rs.getInt(4));
+                System.out.print("Email: " + rs.getString(5));
+                System.out.print(", Clave: " + rs.getString(6));
+                System.out.print(", Usuario: " + rs.getString(7));
+
+
+
+            }
+            rs.close();
         } catch (Exception ex) {
             ex.printStackTrace();
         } finally {
