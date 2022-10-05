@@ -31,14 +31,14 @@ import java.util.List;
 public class NasBean implements Serializable {
 
 //    @ManagedProperty(value = "#{nasRepository}")
-    @Autowired
-    private NasRepository nasRepository;
-
-    private List<Nas> nasList;
-
-    @PostConstruct
-    public void init() {
-        log.debug("init: "+nasRepository);
-        nasList = nasRepository.findAll();
-    }
+//    @Autowired
+//    private NasRepository nasRepository;
+//
+//    private List<Nas> nasList;
+//
+//    @PostConstruct
+//    public void init() {
+//        log.debug("init: "+nasRepository);
+//        //nasList = nasRepository.findAll();
+//    }
 }

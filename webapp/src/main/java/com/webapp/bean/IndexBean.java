@@ -120,7 +120,7 @@ public class IndexBean {
             u = new User();
 
             //System.out.println(rs.getInt(1) + " " + rs.getString(2) + " " + rs.getString(3) + " " + rs.getInt(4) + " " + rs.getString(5) + " " + rs.getString(6) + "     " + rs.getString(7));
-            u.setId(rs.getInt(1));
+//            u.setId(rs.getInt(1));
             u.setNombre(rs.getString(2));
             u.setApellido(rs.getString(3));
             u.setTelefono(rs.getInt(4));
@@ -193,7 +193,7 @@ public class IndexBean {
             conn = DriverManager.getConnection(url, user_db, password);
             Statement stmt = conn.createStatement();
             String sql = "UPDATE usuarios " +
-                    "SET nombre="+user.getNombre()+",apellido="+user.getApellido()+",telfono="+user.getTelefono()+", email="+user.getEmail()+",usuario="+user.getUsuario()+", clave="+user.getClave()+ " WHERE id="+user.getId();
+                    "SET nombre='"+user.getNombre()+"',apellido='"+user.getApellido()+"',telfono="+user.getTelefono()+", email='"+user.getEmail()+"',usuario='"+user.getUsuario()+"', clave='"+user.getClave()+ "' WHERE id="+user.getId();
             System.out.println(sql);
             stmt.executeUpdate(sql);
             ResultSet rs = stmt.executeQuery(QUERY);

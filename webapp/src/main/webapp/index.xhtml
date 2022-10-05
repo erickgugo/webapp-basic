@@ -21,7 +21,8 @@
                          oncomplete="PF('dlgVar').show();"/>
         <div align="center" style="padding: 50px">
             <p:dataTable id="Usuarios" var="user" value="#{indexBean.listUser}">
-
+                selection=#{}
+                <p:column selectionMode="multiple" style="width:16px;text-align:center"/>
                 <p:column headerText="Id">
                     <p:outputLabel value="#{user.id}"/>
                 </p:column>

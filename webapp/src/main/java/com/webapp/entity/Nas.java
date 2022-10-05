@@ -5,8 +5,8 @@ import lombok.Data;
 import javax.persistence.*;
 
 @Data
-@Entity
-@Table(name = "nas")
+//@Entity
+//@Table(name = "nas")
 public class Nas {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
