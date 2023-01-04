@@ -4,19 +4,17 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 @Data
 @Entity
 
-//For usuarios example
-@Table(name = "usuarios")
+@Table(name = "zeus_plus_log-copy")
 
-//@Table(name = "zeus_plus_log-copy")
-
-public class User implements Serializable
+public class Registro implements Serializable
 {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     /*
     private Long id;
 
@@ -32,28 +30,30 @@ public class User implements Serializable
 */
     private Long id;
 
-    private String nombre;
-    private String apellido;
+    private String pagina;
+    private String evento;
+    private String criterio;
 
-    @Column(name = "telfono")
-    private Integer telefono;
-
-    private String email;
+    private String resultado;
+    private String detalle;
     private String usuario;
-    private String clave;
+    private String ip;
+    private Timestamp fecha;
 
-    public User() {
+    public Registro() {
 
     }
 
-    public User(long id, String nombre, String apellido, Integer telefono, String email, String usuario, String clave) {
+    public Registro(long id, String pagina, String evento, String criterio, String resultado, String detalle, String usuario, String ip, Timestamp fecha) {
         this.id=id;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.telefono = telefono;
-        this.email = email;
+        this.pagina = pagina;
+        this.evento = evento;
+        this.criterio = criterio;
+        this.resultado = resultado;
+        this.detalle = detalle;
         this.usuario = usuario;
-        this.clave = clave;
+        this.ip = ip;
+        this.fecha = fecha;
     }
 
 /*
@@ -119,9 +119,10 @@ public class User implements Serializable
                 + "]";
     }
 
- */
+
+
+
+*/
+
 
 }
-
-
-

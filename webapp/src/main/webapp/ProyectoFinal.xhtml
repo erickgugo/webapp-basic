@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <f:facet name="first">
+        <meta http-equiv="x-ua-compatible" content="IE=edge"/>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+    </f:facet>
+
+    <style>
+
+        .export {
+            top:40%;
+            left:2%;
+            width:100px;
+            height:40px;
+            position: absolute;
+            z-index: 2;
+            background: orange;
+        }
+
+        .search {
+            top:30%;
+            left:40%;
+            width:100px;
+            height:40px;
+            position: absolute;
+            z-index: 2;
+            background: orange;
+        }
+
+    </style>
+
+</h:head>
+<h:body>
+    <h:form id="fr">
+
+            <!-- ui-fluidlayout="grid" columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4style="border:0px none; background-color:transparent;""
+-->
+<p:panelGrid columns="4" styleClass="ui-panelgrid-blank">
+   <p:outputLabel value="Usuario"/>
+   <p:inputText value="#{usuariosBean.user.nombre}"/>
+   <p:outputLabel value="IP"/>
+   <p:inputText value="#{usuariosBean.user.apellido}"/>
+   <p:outputLabel value="Pagine"/>
+   <p:inputText value="#{usuariosBean.user.telefono}"/>
+   <p:outputLabel value="Evento"/>
+   <p:inputText value="#{usuariosBean.user.email}"/>
+
+    <p:outputLabel value="Fecha inicio"/>
+   <p:inputText  value="#{usuariosBean.user.usuario}"/>
+
+    <p:outputLabel value="Fecha final"/>
+    <p:calendar value="#{usuariosBean.user.clave}" showOn="button"/>
+
+        <p:outputLabel value="Fecha final2"/>
+        <p:datePicker value="#{usuariosBean.user.clave}" showIcon="true"/>
+
+    </p:panelGrid>
+
+    <p:commandButton value="Buscar" class="search" action="#{usuariosBean.actionSelect()}" update="fr"
+    />
+
+    <!--<p:outputLabel for="fecha inicio" value="Fecha inicio"/>-->
+    <!--<p:datePicker id="fecha inicio" value="#{calendarJava8View.date7}" showIcon="true"/>-->
+
+
+
+
+    <!--<p:outputLabel for="fecha final" value="Fecha final"/>-->
+    <!--<p:datePicker id="fecha final" value="#{calendarJava8View.date7}" showIcon="true"/>-->
+
+
+
+    <p:commandButton value="Exportar" class="export" action="#{usuariosBean.actionSelect()}" update="fr"
+   />
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <p:dataTable id="Usuarios" var="user" value="#{usuariosBean.userList}" reflow="true" styleClass="users-table"
+                     allowUnsorting="true" sortMode="single"
+                 selection="#{usuariosBean.selectedUsers}" rowKey="#{user.id}">
+
+
+        <p:column headerText="Usuario">
+            <p:outputLabel value="#{user.nombre}"/>
+        </p:column>
+        <p:column headerText="IP">
+            <p:outputLabel value="#{user.apellido}"/>
+        </p:column>
+        <p:column headerText="Pagina">
+            <p:outputLabel value="#{user.telefono}"/>
+        </p:column>
+        <p:column headerText="Evento">
+            <p:outputLabel value="#{user.email}"/>
+        </p:column>
+        <p:column headerText="Fecha inicio">
+            <p:outputLabel value="#{user.usuario}"/>
+        </p:column>
+        <p:column headerText="Fecha final">
+            <p:outputLabel value="#{user.clave}"/>
+        </p:column>
+    </p:dataTable>
+
+        <!--
+
+        <p:dataTable id="Usuarios" var="user" value="#{usuariosBean.userList}" reflow="true" styleClass="users-table"
+                     allowUnsorting="true" sortMode="single"
+                 selection="#{usuariosBean.selectedUsers}" rowKey="#{user.id}">
+
+
+        <p:column sortby="#{user.usuario}" headerText="Usuario">
+            <p:outputLabel value="#{user.usuario}"/>
+        </p:column>
+        <p:column sortby="#{user.ip}" headerText="IP">
+            <p:outputLabel value="#{user.ip}"/>
+        </p:column>
+        <p:column sortby="#{user.pagina}" headerText="Pagina">
+            <p:outputLabel value="#{user.pagina}"/>
+        </p:column>
+        <p:column sortby="#{user.evento}" headerText="Evento">
+            <p:outputLabel value="#{user.evento}"/>
+        </p:column>
+        <p:column sortby="#{user.fecha}" headerText="Fecha">
+            <p:outputLabel value="#{user.fecha}"/>
+        </p:column>
+
+    </p:dataTable>
+
+        -->
+
+</h:form>
+</h:body>
+</html>
